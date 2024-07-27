@@ -1,5 +1,8 @@
-﻿using Spectre.Console.Cli;
+﻿using Spectre.Console;
+using Spectre.Console.Cli;
 using TimelineGenerator.Commands;
+
+AnsiConsole.Write(new FigletText("Timeline Generator CLI").LeftJustified().Color(Color.Blue));
 
 var app = new CommandApp();
 app.Configure(config =>
