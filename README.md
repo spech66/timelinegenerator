@@ -30,6 +30,24 @@ TimelineGenerator generate -e bootstrap sample.yml timeline
 
 Download the latest version from the [releases page](https://github.com/spech66/timelinegenerator/releases).
 
+## Export formats
+
+### TimelineJS
+
+[TimelineJS](https://timeline.knightlab.com/) is a free, easy-to-use tool for telling stories in a timeline format.
+
+### Vis.js
+
+[Vis.js Timeline](https://visjs.github.io/vis-timeline/examples/timeline/) is a dynamic, interactive timeline library.
+
+### Mermaid
+
+[Mermaid](https://mermaid.js.org/syntax/timeline.html) is a simple markdown-like script language for generating charts from text via javascript.
+
+### Bootstrap
+
+[Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
+
 ## Todos
 
 - [x] Define YAML format
