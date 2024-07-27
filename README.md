@@ -44,7 +44,7 @@ Download the latest version from the [releases page](https://github.com/spech66/
 
 [Mermaid](https://mermaid.js.org/syntax/timeline.html) is a simple markdown-like script language for generating charts from text via javascript.
 
-Exporter will generate a mardown file containing the Mermaid code. Only date and title are supported. Categories are used as sections.
+Exporter will generate a markdown file containing the Mermaid code. Only date and title are supported. Categories are used as sections.
 
 ### Bootstrap
 
