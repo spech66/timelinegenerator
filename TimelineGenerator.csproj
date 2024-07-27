@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Exporter\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="sample.yml" />
   </ItemGroup>
 
