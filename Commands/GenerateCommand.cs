@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimelineGenerator.Exporter;
 
 namespace TimelineGenerator.Commands
 {
@@ -39,8 +40,8 @@ namespace TimelineGenerator.Commands
             Console.WriteLine(timeline.Version);
             Console.WriteLine(timeline.Events.Count);
 
-            Console.WriteLine($"Exporting to {exporter} format");
-            Console.WriteLine($"Output path: {outputPath}");
+            var exportEngine = ExporterFactory.Create(exporter);
+            exportEngine.Export(timeline, outputPath);
 
             return 0;
         }
