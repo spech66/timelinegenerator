@@ -2,6 +2,34 @@
 
 Generate a timeline from a YAML file. Multiple export formats are supported (TimelineJS, Vis.js, Mermaid, Bootstrap). Data can be filtered.
 
+## Usage
+
+### Windows
+
+```cmd
+TimelineGenerator.exe sample sample.yml
+
+TimelineGenerator.exe generate -e timelinejs sample.yml timeline
+TimelineGenerator.exe generate -e visjs sample.yml timeline
+TimelineGenerator.exe generate -e mermaid sample.yml timeline
+TimelineGenerator.exe generate -e bootstrap sample.yml timeline
+```
+
+### Linux
+
+```bash
+TimelineGenerator.exe sample sample.yml
+
+TimelineGenerator.exe generate -e timelinejs sample.yml timeline
+TimelineGenerator.exe generate -e visjs sample.yml timeline
+TimelineGenerator.exe generate -e mermaid sample.yml timeline
+TimelineGenerator.exe generate -e bootstrap sample.yml timeline
+```
+
+## Installation
+
+Download the latest version from the [releases page](https://github.com/spech66/timelinegenerator/releases).
+
 ## Todos
 
 - [x] Define YAML format
