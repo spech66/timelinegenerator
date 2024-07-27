@@ -18,12 +18,12 @@ TimelineGenerator.exe generate -e bootstrap sample.yml timeline
 ### Linux
 
 ```bash
-TimelineGenerator.exe sample sample.yml
+TimelineGenerator sample sample.yml
 
-TimelineGenerator.exe generate -e timelinejs sample.yml timeline
-TimelineGenerator.exe generate -e visjs sample.yml timeline
-TimelineGenerator.exe generate -e mermaid sample.yml timeline
-TimelineGenerator.exe generate -e bootstrap sample.yml timeline
+TimelineGenerator generate -e timelinejs sample.yml timeline
+TimelineGenerator generate -e visjs sample.yml timeline
+TimelineGenerator generate -e mermaid sample.yml timeline
+TimelineGenerator generate -e bootstrap sample.yml timeline
 ```
 
 ## Installation
