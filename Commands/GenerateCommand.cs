@@ -22,17 +22,25 @@ namespace TimelineGenerator.Commands
             [CommandArgument(1, "[outputPath]")]
             [DefaultValue("timeline")]
             public string OutputPath { get; init; }
+
+            [CommandOption("-e|--exporter")]
+            [DefaultValue("timelinejs")]
+            [Description("Exporter to use. timelinejs, visjs, bootstrap")]
+            public string Exporter { get; set; }
         }
 
         public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
         {
             var inputPath = settings.InputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "timeline.yml");
             var outputPath = settings.OutputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "timeline");
+            var exporter = settings.Exporter ?? "timelinejs";
 
             var timeline = YamlImporter.Import(inputPath);
             Console.WriteLine(timeline.Version);
             Console.WriteLine(timeline.Events.Count);
 
+            Console.WriteLine($"Exporting to {exporter} format");
+            Console.WriteLine($"Output path: {outputPath}");
 
             return 0;
         }
