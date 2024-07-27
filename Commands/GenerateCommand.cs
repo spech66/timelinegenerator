@@ -15,12 +15,12 @@ namespace TimelineGenerator.Commands
     {
         public sealed class Settings : CommandSettings
         {
-            [Description("Path to input file. Defaults to timeline.yml")]
+            [Description("Timeline file to read. Defaults to timeline.yml")]
             [CommandArgument(0, "[inputPath]")]
             [DefaultValue("timeline.yml")]
-            public string InputPath { get; init; }
+            public string InputFile { get; init; }
 
-            [Description("Path to write timeline file. Defaults to timeline. File format depends on exporter.")]
+            [Description("Path to generate timeline. Defaults to timeline. File format depends on exporter.")]
             [CommandArgument(1, "[outputPath]")]
             [DefaultValue("timeline")]
             public string OutputPath { get; init; }
@@ -33,11 +33,13 @@ namespace TimelineGenerator.Commands
 
         public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
         {
-            var inputPath = settings.InputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "timeline.yml");
+            var inputFile = settings.InputFile ?? Path.Combine(Directory.GetCurrentDirectory(), "timeline.yml");
             var outputPath = settings.OutputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "timeline");
             var exporter = settings.Exporter ?? "timelinejs";
 
-            var timeline = YamlImporter.Import(inputPath);
+            var timeline = YamlImporter.Import(inputFile);
+            AnsiConsole.MarkupLine($"Input file: [bold]{inputFile}[/]");
+            AnsiConsole.MarkupLine($"Output path: [bold]{outputPath}[/]");
             AnsiConsole.MarkupLine($"[bold]Version:[/] {timeline.Version}");
             AnsiConsole.MarkupLine($"[bold]Events:[/] {timeline.Events.Count}");
 
