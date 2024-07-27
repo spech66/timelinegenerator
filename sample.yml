@@ -1,0 +1,18 @@
+# Timeline Sample File
+version: 1.0
+
+timeline:
+  - title: "Full Timeline Entry"
+    text: |
+        # Header
+        ## Subheader
+        Markdown text
+    start: "2024-01-01"
+    end: "2024-01-02"
+    tags: ["tag1", "tag2"]
+    location: "Location"
+    category: "Category"
+    image: "image.jpg"
+    link: "https://example.com"
+    color: "#000000"
+    icon: "fas fa-calendar"
