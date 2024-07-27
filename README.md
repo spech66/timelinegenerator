@@ -44,6 +44,8 @@ Download the latest version from the [releases page](https://github.com/spech66/
 
 [Mermaid](https://mermaid.js.org/syntax/timeline.html) is a simple markdown-like script language for generating charts from text via javascript.
 
+Exporter will generate a mardown file containing the Mermaid code. Only date and title are supported. Categories are used as sections.
+
 ### Bootstrap
 
 [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
