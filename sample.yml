@@ -1,9 +1,9 @@
 # Timeline Sample File
 version: 1.0
 
-timeline:
+events:
   - title: "Full Timeline Entry"
-    text: |
+    description: |
         # Header
         ## Subheader
         Markdown text
@@ -17,12 +17,12 @@ timeline:
     color: "#000000"
     icon: "fas fa-calendar"
   - title: "Event Entry"
-    text: "Event text"
+    description: "Event text"
     start: "2024-01-01"
     tags: ["tag1", "tag2"]
     category: "Category"
   - title: "Another Range Entry"
-    text: "Event text"
+    description: "Event text"
     start: "2024-01-01"
     end: "2024-01-02"
     tags: ["tag1", "tag2"]
