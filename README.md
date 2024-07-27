@@ -1,6 +1,6 @@
 # Timeline Generator CLI
 
-Generate a timeline from a YAML file. Multiple export formats are supported. Date can be filtered.
+Generate a timeline from a YAML file. Multiple export formats are supported. Data can be filtered.
 
 ## Todos
 
