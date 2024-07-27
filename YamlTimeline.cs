@@ -29,6 +29,8 @@
     {
         public string Version { get; set; } = "1.0";
 
+        public string Title { get; set; } = "Timeline";
+
         public List<YamlEvent> Events { get; set; } = new List<YamlEvent>();
     }
 }
