@@ -1,4 +1,5 @@
-﻿using Spectre.Console.Cli;
+﻿using Spectre.Console;
+using Spectre.Console.Cli;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,8 +38,8 @@ namespace TimelineGenerator.Commands
             var exporter = settings.Exporter ?? "timelinejs";
 
             var timeline = YamlImporter.Import(inputPath);
-            Console.WriteLine(timeline.Version);
-            Console.WriteLine(timeline.Events.Count);
+            AnsiConsole.MarkupLine($"[bold]Version:[/] {timeline.Version}");
+            AnsiConsole.MarkupLine($"[bold]Events:[/] {timeline.Events.Count}");
 
             var exportEngine = ExporterFactory.Create(exporter);
             exportEngine.Export(timeline, outputPath);
