@@ -4,18 +4,7 @@ Generate a timeline from a YAML file. Multiple export formats are supported. Dat
 
 ## Todos
 
-- [ ] Define YAML format
-    - Title
-	- Text (multiline, MD)
-	- Start date
-	- End date (optional)
-	- Tags #
-	- Location @
-	- Category
-	- Image
-	- Link
-	- Color
-	- Icon
+- [x] Define YAML format
 - [ ] CLI parser using spectre
     - sample
 	- generate
