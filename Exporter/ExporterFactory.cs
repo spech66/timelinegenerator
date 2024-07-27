@@ -14,6 +14,7 @@ namespace TimelineGenerator.Exporter
             {
                 "timelinejs" => new TimelineJSExporter(),
                 "visjs" => new VisJSExporter(),
+                "mermaid" => new MermaidExporter(),
                 "bootstrap" => new BootstrapExporter(),
                 _ => throw new ArgumentException($"Unknown exporter: {exporter}"),
             };

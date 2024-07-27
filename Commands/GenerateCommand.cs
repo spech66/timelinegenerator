@@ -27,7 +27,7 @@ namespace TimelineGenerator.Commands
 
             [CommandOption("-e|--exporter")]
             [DefaultValue("timelinejs")]
-            [Description("Exporter to use. timelinejs, visjs, bootstrap")]
+            [Description("Exporter to use. timelinejs, visjs, mermaid, bootstrap")]
             public string Exporter { get; set; }
         }
 
