@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace TimelineGenerator.Exporter
 {
+    // Repo: https://github.com/NUKnightLab/TimelineJS3
+    // Docs: https://timeline.knightlab.com/
     internal class TimelineJSExporter : Exporter
     {
         public void Export(YamlTimeline timeline, string outputPath)

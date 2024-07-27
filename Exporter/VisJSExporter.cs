@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace TimelineGenerator.Exporter
 {
+    // Repo: https://github.com/visjs/vis-timeline
+    // Docs: https://visjs.github.io/vis-timeline/
     internal class VisJSExporter : Exporter
     {
         public void Export(YamlTimeline timeline, string outputPath)
