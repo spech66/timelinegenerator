@@ -8,15 +8,15 @@ namespace TimelineGenerator.Commands
     {
         public sealed class Settings : CommandSettings
         {
-            [Description("Path to write a sample file. Defaults to test.yml.")]
+            [Description("Path to write a sample file. Defaults to sample.yml.")]
             [CommandArgument(0, "[outputPath]")]
-            [DefaultValue("test.yml")]
+            [DefaultValue("sample.yml")]
             public string OutputPath { get; init; }
         }
 
         public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
         {
-            var outputPath = settings.OutputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "test.yml");
+            var outputPath = settings.OutputPath ?? Path.Combine(Directory.GetCurrentDirectory(), "sample.yml");
 
             var sampleFile = Properties.Resources.sample;
             File.WriteAllBytes(outputPath, sampleFile);
