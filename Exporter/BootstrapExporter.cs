@@ -59,10 +59,30 @@ namespace TimelineGenerator.Exporter
                 writer.WriteLine($"          <h6 class=\"card-subtitle mb-2 text-muted\">{Escape(yamlEvent.DateRange)}</h6>");
                 writer.WriteLine($"          <p class=\"card-text\">{MarkdownToHtml(yamlEvent.Description)}</p>");
                 writer.WriteLine("         </div>");
+                WriteCardFooter(writer, yamlEvent);
                 writer.WriteLine("       </div>");
                 writer.WriteLine();
             }
 
+        }
+
+        private void WriteCardFooter(StreamWriter writer, YamlEvent? yamlEvent)
+        {
+            // Tags, Location, Category as badged in footer
+            writer.WriteLine("           <div class=\"card-footer\">");
+            if (!string.IsNullOrEmpty(yamlEvent.Category))
+            {
+                writer.WriteLine($"                 <span class=\"badge bg-info me-1\">{Escape(yamlEvent.Category)}</span>");
+            }
+            foreach (var tag in yamlEvent.Tags)
+            {
+                writer.WriteLine($"                 <span class=\"badge bg-secondary me-1\"># {Escape(tag)}</span>");
+            }
+            if (!string.IsNullOrEmpty(yamlEvent.Location))
+            {
+                writer.WriteLine($"                 <span class=\"badge bg-primary me-1\">@ {Escape(yamlEvent.Location)}</span>");
+            }
+            writer.WriteLine("           </div>");
         }
 
         private object Escape(string title)
