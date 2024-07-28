@@ -88,7 +88,7 @@ namespace TimelineGenerator.Exporter
                     writer.WriteLine($"      end_date: {{ year: {e.End.Value.Year}, month: {e.End.Value.Month}, day: {e.End.Value.Day} }},");
                 }
 
-                writer.WriteLine($"      text: {{ headline: \"{Escape(e.Title)}\", text: \"{MarkdownToHtml(e.Description)}\" }},");
+                writer.WriteLine($"      text: {{ headline: \"{Escape(e.Title)}\", text: \"{MarkdownToHtml(e.Description, e.Location, e.Tags)}\" }},");
 
                 if (!string.IsNullOrEmpty(e.Image))
                 {
@@ -114,9 +114,21 @@ namespace TimelineGenerator.Exporter
             return title.Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("&", "&amp;");
         }
 
-        private object MarkdownToHtml(string text)
+        private object MarkdownToHtml(string text, string location, List<string> tags)
         {
-            return Markdown.ToHtml(text).Replace("\n", "<br>");
+            var combinedText = text;
+
+            if(!string.IsNullOrEmpty(location))
+            {
+                combinedText += $"\n\nLocation: {location}";
+            }
+
+            if(tags.Count > 0)
+            {
+                combinedText += $"\n\nTags: {string.Join(", ", tags)}";
+            }
+
+            return Markdown.ToHtml(combinedText).Replace("\n", "<br>");
         }
     }
 }
