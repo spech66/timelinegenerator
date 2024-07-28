@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TimelineGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "generate -e mermaid sample.yml"
+    }
+  }
+}
