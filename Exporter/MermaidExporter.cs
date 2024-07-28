@@ -43,21 +43,32 @@ namespace TimelineGenerator.Exporter
                 {
                     var section = category != string.Empty ? category : "Empty";
                     writer.WriteLine($"    section {section}");
-                    foreach (var @event in timeline.Events.Where(e => e.Category == category).OrderBy(s => s.Start))
-                    {
-                        WriteEvent(writer, @event, 2);
-                    }
+                    WriteEvents(timeline, writer, 2, category);
                 }
             }
             else
             {
-                foreach (var @event in timeline.Events.OrderBy(s => s.Start))
-                {
-                    WriteEvent(writer, @event, 1);
-                }
+                WriteEvents(timeline, writer, 1, null);
             }
 
             writer.WriteLine("```");
+        }
+
+        private void WriteEvents(YamlTimeline timeline, StreamWriter writer, int ident, string? category = null)
+        {
+            var timelineEvents = timeline.Events;
+            var events = timelineEvents.AsQueryable();
+
+            if (category != null)
+            {
+                events = events.Where(e => e.Category == category);
+            }
+            events = events.OrderBy(e => e.Start);
+
+            foreach (var yamlEvent in events)
+            {
+                WriteEvent(writer, yamlEvent, ident);
+            }
         }
 
         private void WriteEvent(StreamWriter writer, YamlEvent yamlEvent, int ident)
