@@ -36,6 +36,8 @@ Download the latest version from the [releases page](https://github.com/spech66/
 
 [TimelineJS](https://timeline.knightlab.com/) is a free, easy-to-use tool for telling stories in a timeline format.
 
+![TimelineJS Timeline](https://media.githubusercontent.com/media/spech66/timelinegenerator/main/_Misc/timelinejs.png)
+
 ### Vis.js
 
 [Vis.js Timeline](https://visjs.github.io/vis-timeline/examples/timeline/) is a dynamic, interactive timeline library.
