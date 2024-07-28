@@ -18,9 +18,9 @@ namespace TimelineGenerator.Exporter
                 WriteHeader(timeline, writer);
                 WriteMermaid(timeline, writer);
                 WriteFooter(writer);
-
-                return outputFile;
             }
+
+            return outputFile;
         }
 
         private static void WriteHeader(YamlTimeline timeline, StreamWriter writer)

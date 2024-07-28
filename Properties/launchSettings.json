@@ -2,7 +2,7 @@
   "profiles": {
     "TimelineGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "generate -e mermaid sample.yml"
+      "commandLineArgs": "generate -e timelinejs sample.yml"
     }
   }
 }
