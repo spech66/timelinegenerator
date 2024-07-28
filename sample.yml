@@ -1,6 +1,7 @@
 # Timeline Sample File
 version: 1.0
 title: "Sample Timeline"
+description: "This is a sample timeline."
 
 events:
   - title: "Full Timeline Entry"

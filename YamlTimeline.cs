@@ -35,6 +35,8 @@
 
         public string Title { get; set; } = "Timeline";
 
+        public string Description { get; set; } = string.Empty;
+
         public List<YamlEvent> Events { get; set; } = new List<YamlEvent>();
     }
 }
