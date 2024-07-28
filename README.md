@@ -42,6 +42,8 @@ Download the latest version from the [releases page](https://github.com/spech66/
 
 [Vis.js Timeline](https://visjs.github.io/vis-timeline/examples/timeline/) is a dynamic, interactive timeline library.
 
+![Mermaid Timeline](https://media.githubusercontent.com/media/spech66/timelinegenerator/main/_Misc/visjs.png)
+
 ### Mermaid
 
 [Mermaid](https://mermaid.js.org/syntax/timeline.html) is a simple markdown-like script language for generating charts from text via javascript.
