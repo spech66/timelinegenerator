@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Markdig;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -97,6 +98,10 @@ namespace TimelineGenerator.Exporter
                 {
                     writer.WriteLine($"      media: {{ url: \"{e.Link}\", text: \"Read more\" }},");
                 }
+                if(!string.IsNullOrEmpty(e.Category))
+                {
+                    writer.WriteLine($"      group: \"{e.Category}\",");
+                }
                 writer.WriteLine("    },");
             }
 
@@ -111,7 +116,7 @@ namespace TimelineGenerator.Exporter
 
         private object MarkdownToHtml(string text)
         {
-            return text.Replace("\n", "<br>");
+            return Markdown.ToHtml(text).Replace("\n", "<br>");
         }
     }
 }
