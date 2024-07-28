@@ -65,8 +65,8 @@ Exporter will generate a markdown file containing the Mermaid code. Only date an
 - [x] CLI parser using spectre
     - sample
 	- generate
-- [ ] CLI filter parameters: date rang, tags, location, ...
 - [x] Add export format for [TimelineJS](https://timeline.knightlab.com/) [V3 Repo](https://github.com/NUKnightLab/TimelineJS3)
 - [x] Add export format for	[Vis.js Timeline](https://visjs.github.io/vis-timeline/) [Repo](https://github.com/visjs/vis-timeline)
 - [x] Add export format for [Mermaid in Markdown codeblock](https://mermaid.js.org/syntax/timeline.html)
 - [x] Add export format for [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/)
+- [ ] CLI filter parameters: date rang, tags, location, ...
