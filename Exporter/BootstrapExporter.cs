@@ -24,5 +24,10 @@ namespace TimelineGenerator.Exporter
         {
             throw new NotImplementedException();
         }
+
+        private object Escape(string title)
+        {
+            return title.Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("&", "&amp;");
+        }
     }
 }
