@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Markdig;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace TimelineGenerator.Exporter
     // Docs: https://visjs.github.io/vis-timeline/
     internal class VisJSExporter : Exporter
     {
+        private const string DefaultGroupId = "empty";
+
         public string Export(YamlTimeline timeline, string outputPath)
         {
             var outputFile = outputPath + ".html";
@@ -39,15 +42,33 @@ namespace TimelineGenerator.Exporter
             writer.WriteLine("  <body>");
             writer.WriteLine("    <div id=\"visualization\"></div>");
             writer.WriteLine("    <script type=\"text/javascript\">");
+            WriteGroups(timeline, writer);
             WriteItems(timeline, writer);
             writer.WriteLine("      var container = document.getElementById('visualization');");
             writer.WriteLine("      var items = new vis.DataSet(data);");
-            writer.WriteLine("      var options = {};");
-            writer.WriteLine("      var timeline = new vis.Timeline(container, items, options);");
+            writer.WriteLine("      var options = { align: 'left', orientation: 'top', stack: 'false' };");
+            writer.WriteLine("      var timeline = new vis.Timeline(container, items, groups, options);");
             writer.WriteLine("    </script>");
             writer.WriteLine("  </body>");
             writer.WriteLine("</html>");
             writer.WriteLine();
+        }
+
+        private void WriteGroups(YamlTimeline timeline, StreamWriter writer)
+        {
+            var categories = timeline.Events.Select(e => e.Category).Distinct().ToList().Order();
+            writer.WriteLine("      var groups = [");
+            foreach (var c in categories)
+            {
+                if(string.IsNullOrEmpty(c))
+                {
+                    writer.WriteLine($"        {{ id: '{DefaultGroupId}', content: 'Default' }},");
+                } else
+                {
+                    writer.WriteLine($"        {{ id: '{c}', content: '{c}' }},");
+                }
+            }
+            writer.WriteLine("      ];");
         }
 
         private void WriteItems(YamlTimeline timeline, StreamWriter writer)
@@ -56,11 +77,18 @@ namespace TimelineGenerator.Exporter
             foreach (var e in timeline.Events)
             {
                 writer.WriteLine("        {");
-                writer.WriteLine($"          content: '{Escape(e.Title)}',");
+                writer.WriteLine($"          content: '{MarkdownToHtml(e)}',");
                 writer.WriteLine($"          start: '{e.Start:yyyy-MM-dd}',");
                 if (e.End.HasValue)
                 {
                     writer.WriteLine($"          end: '{e.End.Value:yyyy-MM-dd}',");
+                }
+                if(!string.IsNullOrEmpty(e.Category))
+                {
+                    writer.WriteLine($"          group: '{e.Category}',");
+                } else
+                {
+                    writer.WriteLine($"          group: '{DefaultGroupId}',");
                 }
                 writer.WriteLine("        },");
             }
@@ -70,6 +98,24 @@ namespace TimelineGenerator.Exporter
         private object Escape(string title)
         {
             return title.Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("&", "&amp;");
+        }
+
+        private object MarkdownToHtml(YamlEvent yamlEvent)
+        {
+            var combinedText = $"# {yamlEvent.Title}\n\n";
+            combinedText += yamlEvent.Description;
+
+            if (!string.IsNullOrEmpty(yamlEvent.Location))
+            {
+                combinedText += $"\n\nLocation: {yamlEvent.Location}";
+            }
+
+            if (yamlEvent.Tags.Count > 0)
+            {
+                combinedText += $"\n\nTags: {string.Join(", ", yamlEvent.Tags)}";
+            }
+
+            return Markdown.ToHtml(combinedText).Replace("\n", "<br>");
         }
     }
 }

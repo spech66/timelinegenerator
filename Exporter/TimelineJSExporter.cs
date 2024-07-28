@@ -88,7 +88,7 @@ namespace TimelineGenerator.Exporter
                     writer.WriteLine($"      end_date: {{ year: {e.End.Value.Year}, month: {e.End.Value.Month}, day: {e.End.Value.Day} }},");
                 }
 
-                writer.WriteLine($"      text: {{ headline: \"{Escape(e.Title)}\", text: \"{MarkdownToHtml(e.Description, e.Location, e.Tags)}\" }},");
+                writer.WriteLine($"      text: {{ headline: \"{Escape(e.Title)}\", text: \"{MarkdownToHtml(e)}\" }},");
 
                 if (!string.IsNullOrEmpty(e.Image))
                 {
@@ -114,18 +114,18 @@ namespace TimelineGenerator.Exporter
             return title.Replace("\"", "&quot;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("&", "&amp;");
         }
 
-        private object MarkdownToHtml(string text, string location, List<string> tags)
+        private object MarkdownToHtml(YamlEvent yamlEvent)
         {
-            var combinedText = text;
+            var combinedText = yamlEvent.Description;
 
-            if(!string.IsNullOrEmpty(location))
+            if(!string.IsNullOrEmpty(yamlEvent.Location))
             {
-                combinedText += $"\n\nLocation: {location}";
+                combinedText += $"\n\nLocation: {yamlEvent.Location}";
             }
 
-            if(tags.Count > 0)
+            if(yamlEvent.Tags.Count > 0)
             {
-                combinedText += $"\n\nTags: {string.Join(", ", tags)}";
+                combinedText += $"\n\nTags: {string.Join(", ", yamlEvent.Tags)}";
             }
 
             return Markdown.ToHtml(combinedText).Replace("\n", "<br>");
