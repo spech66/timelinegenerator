@@ -36,10 +36,11 @@ namespace TimelineGenerator.Exporter
             writer.WriteLine($"    title {timeline.Title}");
 
             // Only date and title are supported. Categories are used as sections if multiple are present.
-            var sections = timeline.Events.Select(e => e.Category).Where(s => s != string.Empty).Distinct().Count();
-            if (sections > 1)
+            var sectionCount = timeline.Events.Select(e => e.Category).Where(s => s != string.Empty).Distinct().Count();
+            if (sectionCount > 1)
             {
-                foreach (var category in timeline.Events.Select(e => e.Category).Distinct().Order())
+                var categories = timeline.Events.Select(e => e.Category).Distinct().Order();
+                foreach (var category in categories)
                 {
                     var section = category != string.Empty ? category : "Empty";
                     writer.WriteLine($"    section {section}");
@@ -63,22 +64,30 @@ namespace TimelineGenerator.Exporter
             {
                 events = events.Where(e => e.Category == category);
             }
-            events = events.OrderBy(e => e.Start);
+            events = events.OrderBy(e => e.DateRange);
 
+            var lastDateRange = "";
             foreach (var yamlEvent in events)
             {
-                WriteEvent(writer, yamlEvent, ident);
+                WriteEvent(writer, yamlEvent, ident, lastDateRange);
+                lastDateRange = yamlEvent.DateRange;
             }
         }
 
-        private void WriteEvent(StreamWriter writer, YamlEvent yamlEvent, int ident)
-        {
+        private void WriteEvent(StreamWriter writer, YamlEvent yamlEvent, int ident, string lastDateRange)
+        {                            
+            var dateRange = yamlEvent.DateRange;
+
+            // If the date range is the same as the last one, we group the events.
+            if(yamlEvent.DateRange == lastDateRange)
+            {
+                ident++;
+                dateRange = "";
+            }
+
             var identation = new string(' ', ident * 4);
 
-            var endDate = yamlEvent.End.HasValue ? yamlEvent.End.Value.ToString("yyyy-MM-dd") : string.Empty;
-            var end = endDate != string.Empty ? $"- {endDate}" : string.Empty;
-
-            writer.WriteLine($"{identation}{yamlEvent.Start:yyyy-MM-dd} {end} : {Escape(yamlEvent.Title)}");
+            writer.WriteLine($"{identation}{dateRange} : {Escape(yamlEvent.Title)}");
         }
 
         private static void WriteFooter(StreamWriter writer)
