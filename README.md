@@ -56,6 +56,8 @@ Exporter will generate a markdown file containing the Mermaid code. Only date an
 
 [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
 
+![Bootstrap Timeline](https://media.githubusercontent.com/media/spech66/timelinegenerator/main/_Misc/bootstrap.png)
+
 ## Todos
 
 - [x] Define YAML format
@@ -67,4 +69,4 @@ Exporter will generate a markdown file containing the Mermaid code. Only date an
 - [x] Add export format for [TimelineJS](https://timeline.knightlab.com/) [V3 Repo](https://github.com/NUKnightLab/TimelineJS3)
 - [x] Add export format for	[Vis.js Timeline](https://visjs.github.io/vis-timeline/) [Repo](https://github.com/visjs/vis-timeline)
 - [x] Add export format for [Mermaid in Markdown codeblock](https://mermaid.js.org/syntax/timeline.html)
-- [ ] Add export format for [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/)
+- [x] Add export format for [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/)
