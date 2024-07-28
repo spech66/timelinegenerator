@@ -72,15 +72,15 @@ namespace TimelineGenerator.Exporter
             writer.WriteLine("           <div class=\"card-footer\">");
             if (!string.IsNullOrEmpty(yamlEvent.Category))
             {
-                writer.WriteLine($"                 <span class=\"badge bg-info me-1\">{Escape(yamlEvent.Category)}</span>");
+                writer.WriteLine($"                 <span class=\"badge text-bg-primary me-1\">{Escape(yamlEvent.Category)}</span>");
             }
             foreach (var tag in yamlEvent.Tags)
             {
-                writer.WriteLine($"                 <span class=\"badge bg-secondary me-1\"># {Escape(tag)}</span>");
+                writer.WriteLine($"                 <span class=\"badge text-bg-success me-1\"># {Escape(tag)}</span>");
             }
             if (!string.IsNullOrEmpty(yamlEvent.Location))
             {
-                writer.WriteLine($"                 <span class=\"badge bg-primary me-1\">@ {Escape(yamlEvent.Location)}</span>");
+                writer.WriteLine($"                 <span class=\"badge text-bg-warning me-1\">@ {Escape(yamlEvent.Location)}</span>");
             }
             writer.WriteLine("           </div>");
         }
