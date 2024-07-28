@@ -46,6 +46,8 @@ Download the latest version from the [releases page](https://github.com/spech66/
 
 Exporter will generate a markdown file containing the Mermaid code. Only date and title are supported. Categories are used as sections.
 
+![Mermaid Timeline](https://media.githubusercontent.com/media/spech66/timelinegenerator/main/_Misc/mermaid.png)
+
 ### Bootstrap
 
 [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/) is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
