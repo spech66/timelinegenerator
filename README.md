@@ -69,4 +69,4 @@ Exporter will generate a markdown file containing the Mermaid code. Only date an
 - [x] Add export format for	[Vis.js Timeline](https://visjs.github.io/vis-timeline/) [Repo](https://github.com/visjs/vis-timeline)
 - [x] Add export format for [Mermaid in Markdown codeblock](https://mermaid.js.org/syntax/timeline.html)
 - [x] Add export format for [Bootstrap v5](https://getbootstrap.com/docs/5.3/components/card/)
-- [ ] CLI filter parameters: date rang, tags, location, ...
+- [ ] CLI filter parameters: date range, tags, category
