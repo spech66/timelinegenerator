@@ -1,4 +1,5 @@
-﻿using Spectre.Console.Cli;
+﻿using Spectre.Console;
+using Spectre.Console.Cli;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
@@ -21,6 +22,7 @@ namespace TimelineGenerator.Commands
             var sampleFile = Properties.Resources.sample;
             File.WriteAllBytes(outputFile, sampleFile);
 
+            AnsiConsole.MarkupLine($"[green]Success:[/] Sample file generated at [bold]{outputFile}[/].");
             return 0;
         }
     }

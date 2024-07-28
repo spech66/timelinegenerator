@@ -9,7 +9,7 @@ namespace TimelineGenerator.Exporter
     // Docs: https://mermaid.js.org/syntax/timeline.html
     internal class MermaidExporter : Exporter
     {
-        public void Export(YamlTimeline timeline, string outputPath)
+        public string Export(YamlTimeline timeline, string outputPath)
         {
             var outputFile = outputPath + ".md";
 
@@ -46,6 +46,8 @@ namespace TimelineGenerator.Exporter
                 writer.WriteLine("```");
                 writer.WriteLine();
                 writer.WriteLine("Generated using [TimelineGenerator](https://github.com/spech66/timelinegenerator).");
+
+                return outputFile;
             }
         }
 

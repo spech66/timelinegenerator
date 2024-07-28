@@ -8,7 +8,7 @@ namespace TimelineGenerator.Exporter
 {
     internal class BootstrapExporter: Exporter
     {
-        public void Export(YamlTimeline timeline, string outputPath)
+        public string Export(YamlTimeline timeline, string outputPath)
         {
             throw new NotImplementedException();
         }

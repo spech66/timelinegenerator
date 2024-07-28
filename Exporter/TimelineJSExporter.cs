@@ -10,7 +10,7 @@ namespace TimelineGenerator.Exporter
     // Docs: https://timeline.knightlab.com/
     internal class TimelineJSExporter : Exporter
     {
-        public void Export(YamlTimeline timeline, string outputPath)
+        public string Export(YamlTimeline timeline, string outputPath)
         {
             throw new NotImplementedException();
         }

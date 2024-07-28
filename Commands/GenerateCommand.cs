@@ -44,8 +44,9 @@ namespace TimelineGenerator.Commands
             AnsiConsole.MarkupLine($"[bold]Events:[/] {timeline.Events.Count}");
 
             var exportEngine = ExporterFactory.Create(exporter);
-            exportEngine.Export(timeline, outputPath);
+            var filePath = exportEngine.Export(timeline, outputPath);
 
+            AnsiConsole.MarkupLine($"[green]Success:[/] Timeline generated at [bold]{filePath}[/].");
             return 0;
         }
     }

@@ -8,6 +8,6 @@ namespace TimelineGenerator.Exporter
 {
     internal interface Exporter
     {
-        void Export(YamlTimeline timeline, string outputPath);
+        string Export(YamlTimeline timeline, string outputPath);
     }
 }

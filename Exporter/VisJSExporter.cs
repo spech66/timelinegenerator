@@ -10,7 +10,7 @@ namespace TimelineGenerator.Exporter
     // Docs: https://visjs.github.io/vis-timeline/
     internal class VisJSExporter : Exporter
     {
-        public void Export(YamlTimeline timeline, string outputPath)
+        public string Export(YamlTimeline timeline, string outputPath)
         {
             throw new NotImplementedException();
         }
