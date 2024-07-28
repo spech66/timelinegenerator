@@ -1,0 +1,68 @@
+# Create new tag
+# git tag v0.0.1
+# git push --tags
+
+name: Release on publish
+
+on:
+  release:
+    types: [published]
+
+env:
+  DOTNET_VERSION: '8.0.x'
+
+jobs:
+  release:
+    name: Release
+    
+    strategy:
+      matrix:
+        kind: ['linux', 'windows']
+        include:
+          - kind: linux
+            os: ubuntu-latest
+            target: linux-x64
+          - kind: windows
+            os: windows-latest
+            target: win-x64
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+  
+      # Install the .NET Core workload
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+            dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Build
+        shell: bash
+        run: |
+          tag=$(git describe --tags --abbrev=0)
+          release_name="timelinegenerator-$tag-${{ matrix.target }}"
+
+          # Build everything
+          dotnet publish --framework net8.0 --runtime "${{ matrix.target }}" -c Release --property:PublishDir="$release_name"
+
+          # Pack files
+          if [ "${{ matrix.target }}" == "win-x64" ]; then
+            7z a -tzip "$release_name.zip" "./$release_name/*"
+          else
+            tar czvf "$release_name.tar.gz" -C "./$release_name" .             
+          fi
+
+          # Delete output directory
+          rm -r "./$release_name"
+
+      - name: Publish
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "$release_name*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# Reference: https://www.newline.co/@krishna/release-management-with-aspnet-core-and-github-actions--ff31a146
