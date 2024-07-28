@@ -23,6 +23,10 @@
         public string Color { get; set; } = string.Empty;
 
         public string Icon { get; set; } = string.Empty;
+
+
+
+        public string DateRange => End.HasValue ? $"{Start:yyyy-MM-dd} - {End:yyyy-MM-dd}" : $"{Start:yyyy-MM-dd}";
     }
 
     internal class YamlTimeline
